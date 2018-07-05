@@ -6,7 +6,7 @@ for (@ARGV)
 {
     s/:$//;
     my $line=0;
-    $line=$1 if (s/:(\d+)$//);
+    $line=$1 if (s/:(\d+)(?:|:\d+)$//);
 
     push @files, "+$line" if $line;
     push @files, $_;
