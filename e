@@ -14,4 +14,4 @@ for (@ARGV)
 
 die "No files to edit!\n" unless 1+$#files;
 
-exec $ENV{'EDITOR'}//"/usr/bin/jstar", @files;
+exec $ENV{'EDITOR'}//"/usr/bin/sensible-editor", @files;
