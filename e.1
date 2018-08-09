@@ -1,0 +1,51 @@
+.TH e 1 2018-08-09 e
+.SH NAME
+e \- invoke your editor, with optional file:lineno handling
+.SH SYNOPSIS
+.B e
+.RI [ "<editor's options>" ]
+.IR <file> [\fB:\fR\fIline\fR]
+.RI [ <file> ...]
+.br
+.I <pipeline>
+.B | e -:
+.RI [ "<editor's options>" ]
+.br
+.I <pipeline>
+.B | e -::
+.RI [ "<editor's options>" ]
+.SH DESCRIPTION
+Programs that mention line numbers in messages have mostly standardized on
+"file:line: Message" or "file:line:col: Message".  Alas, this is not what
+editors support, which is almost always "+line" "file".
+.P
+.B e
+takes a list of file names, optionally followed with
+.BI : line \fR,
+then possibly with
+.BI : column
+and/or an additional colon, and gives to your editor.  The line numbers
+are passed as a separate argument "\fB+\fR\fIline\fR" before the file name
+which is what editors expect.
+.P
+Alternatively, you can provide file names on the standard input, and specify
+.B -:
+or
+.B -::
+as the first argument.  The former allows file names without line numbers,
+the latter silently ignores anything not in the expected format.
+.P
+Examples:
+.IP
+git grep FIXME|e -:
+.IP
+make 2>&1 >/dev/null|grep error:|e -::
+.P
+.B e
+is also handy as a general-purpose smart alias for running the editor.
+If yours has a long name like "jstar" or "emacs", you save four keystrokes
+on what for a typical Unix user is the most often issued command.
+.SH EDITOR SELECTION
+If the environment variable \fB$EDITOR\fR is set, \fBe\fR will use that.
+Otherwise, it calls \fBsensible-editor\fR, which asks what editor to use
+then saves your answer.  You can run \fBselect-editor\fR to get asked again.
