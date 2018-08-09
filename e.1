@@ -41,6 +41,8 @@ git grep FIXME|e -:
 .IP
 make 2>&1 >/dev/null|grep error:|e -::
 .P
+This is roughly a shorthand for "e `pipeline|cut -d: -f1-2`".
+.P
 .B e
 is also handy as a general-purpose smart alias for running the editor.
 If yours has a long name like "jstar" or "emacs", you save four keystrokes
