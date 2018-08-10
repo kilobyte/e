@@ -1,0 +1,3 @@
+version=4
+opts=filenamemangle=s/.+\/v(\d\S+)\.tar\.gz/e-$1\.tar\.gz/ \
+  https://github.com/kilobyte/e/tags .*/v(\d\S+)\.tar\.gz
