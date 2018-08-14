@@ -11,6 +11,7 @@ Vcs-Browser: https://github.com/kilobyte/e/tree/debian
 
 Package: e-wrapper
 Architecture: all
+Multi-Arch: foreign
 Depends: ${shlibs:Depends}, ${misc:Depends}, sensible-utils
 Description: invoke your editor, with optional file:lineno handling
  All or almost all Unix editors support the syntax of "editor +42 file", to
