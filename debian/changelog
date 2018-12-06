@@ -1,3 +1,10 @@
+e-wrapper (0.1-2) unstable; urgency=medium
+
+  * Multi-Arch: foreign
+  * Use https for Homepage (Jelmer Vernooĳ).
+
+ -- Adam Borowski <kilobyte@angband.pl>  Thu, 06 Dec 2018 20:38:57 +0100
+
 e-wrapper (0.1-1) unstable; urgency=medium
 
   * Initial release, closes: #905794
