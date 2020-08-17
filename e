@@ -3,8 +3,10 @@
 my @files;
 my $cut;
 
+my @EDITOR = split(' ', $ENV{EDITOR} //"/usr/bin/sensible-editor");
+
 if (!@ARGV)
-    { exec $ENV{'EDITOR'}//"/usr/bin/sensible-editor"; }
+    { exec @EDITOR; }
 if ($ARGV[0] eq '-:')
     { $cut=1; }
 elsif ($ARGV[0] eq '-::')
@@ -41,4 +43,4 @@ else
 
 die "No files to edit!\n" unless 1+$#files;
 
-exec $ENV{'EDITOR'}//"/usr/bin/sensible-editor", @files;
+exec @EDITOR, @files;
