@@ -16,3 +16,11 @@ If your editor allows multi-open, "e" can also handle pipelines such as:
 Also, because of its short name, it reduces the typing needed to start the
 editor by half if you use vi, by 80% if emacs or jstar — and that's by
 far the most frequent command a Unix user does.
+
+
+v0.2
+====
+
+Possible regression: to handle file:42 patterns in the middle of a line,
+`e -:` and `-::` no longer allows filenames with a space.  If this proves
+to be an issue, please shout at me.
