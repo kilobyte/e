@@ -2,8 +2,8 @@ Source: e-wrapper
 Section: editors
 Priority: optional
 Maintainer: Adam Borowski <kilobyte@angband.pl>
-Build-Depends: debhelper (>= 11~)
-Standards-Version: 4.2.1
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.1
 Rules-Requires-Root: no
 Homepage: https://github.com/kilobyte/e
 Vcs-Git: https://github.com/kilobyte/e -b debian
