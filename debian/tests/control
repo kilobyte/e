@@ -1,0 +1,2 @@
+Tests: teh-testsuite-of-doom
+Depends: @, git, colorized-logs

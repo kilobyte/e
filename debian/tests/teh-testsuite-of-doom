@@ -1,0 +1,67 @@
+#!/bin/sh
+set -e
+
+cd "$AUTOPKGTEST_TMP"
+
+if [ -t 1 ]; then
+	alias tit="printf '\\e[35m-=[ \\e[0;35;1m%s\\e[0;35m ]=-\\e[0m\\n'"
+else
+	alias tit="printf -- '-=[ %s ]=-\\n'"
+fi
+
+git init -b dominus
+export GIT_AUTHOR_NAME='Julius Caesar'
+export GIT_AUTHOR_EMAIL='imperator@spqr.it'
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+cat >somefile <<END
+meow
+FIXME: bark
+moo
+END
+git add somefile
+git commit -m meow
+
+export EDITOR=echo
+
+tit "no colons"
+e foo bar baz |tee output
+diff -u - output <<END
+foo bar baz
+END
+
+tit "one colon"
+e foo:3 foo:547 bar:2 |tee output
+diff -u - output <<END
++3 foo +547 foo +2 bar
+END
+
+tit "two colons"
+e foo:1:2 foo:42:43 bar:4294967296:2147483648 |tee output
+diff -u - output <<END
++1 foo +42 foo +4294967296 bar
+END
+
+tit "git grep w/o -n | -:"
+git grep FIXME|pipetty e -:|tee output
+diff -u - output <<END
+somefile
+END
+
+tit "git grep with -n | -:"
+git grep -n FIXME|pipetty e -:|tee output
+diff -u - output <<END
++2 somefile
+END
+
+tit "git grep w/o -n | -::"
+git grep FIXME|pipetty e -::|tee output
+diff -u - output <<END
+No files to edit!
+END
+
+tit "git grep with -n | -::"
+git grep -n FIXME|pipetty e -::|tee output
+diff -u - output <<END
++2 somefile
+END
