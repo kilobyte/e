@@ -1,3 +1,11 @@
+e-wrapper (0.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * dh 13.
+  * Tests.
+
+ -- Adam Borowski <kilobyte@angband.pl>  Sun, 14 Feb 2021 16:06:40 +0100
+
 e-wrapper (0.1-2) unstable; urgency=medium
 
   * Multi-Arch: foreign
