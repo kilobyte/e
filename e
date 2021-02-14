@@ -3,8 +3,10 @@
 my @files;
 my $cut;
 
+my @EDITOR = split(' ', $ENV{EDITOR} //"/usr/bin/sensible-editor");
+
 if (!@ARGV)
-    { exec $ENV{'EDITOR'}//"/usr/bin/sensible-editor"; }
+    { exec @EDITOR; }
 if ($ARGV[0] eq '-:')
     { $cut=1; }
 elsif ($ARGV[0] eq '-::')
@@ -25,8 +27,8 @@ unless ($cut)
 else
 {
     @files=@ARGV[1..-1];
-    my $re=($cut==1) ? '^([^:]+)(?:$|:(\d+)[: \t\r\n])'
-                     : '^([^:]+):(\d+)(?::\d+)?(?:$|:[ \t\r\n])';
+    my $re=($cut==1) ? '([^: \t]+)(?:$|:(\d+)[: \t\r\n]|:)'
+                     : '([^: \t]+):(\d+)(?::\d+)?(?:$|:)';
     while(<STDIN>)
     {
         next unless /$re/;
@@ -41,4 +43,4 @@ else
 
 die "No files to edit!\n" unless 1+$#files;
 
-exec $ENV{'EDITOR'}//"/usr/bin/sensible-editor", @files;
+exec @EDITOR, @files;
