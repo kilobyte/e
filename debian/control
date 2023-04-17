@@ -3,10 +3,10 @@ Section: editors
 Priority: optional
 Maintainer: Adam Borowski <kilobyte@angband.pl>
 Build-Depends: debhelper-compat (= 13)
-Standards-Version: 4.5.1
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://github.com/kilobyte/e
-Vcs-Git: https://github.com/kilobyte/e -b debian
+Vcs-Git: https://github.com/kilobyte/e.git -b debian
 Vcs-Browser: https://github.com/kilobyte/e/tree/debian
 
 Package: e-wrapper
